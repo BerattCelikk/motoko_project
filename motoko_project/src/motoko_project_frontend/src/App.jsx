@@ -4,26 +4,22 @@ import { motoko_project_backend } from 'declarations/motoko_project_backend';
 function App() {
   const [greeting, setGreeting] = useState('');
 
-  function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const name = event.target.elements.name.value;
-    motoko_project_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
+    const greetingMessage = await motoko_project_backend.greet(name);
+    setGreeting(greetingMessage);
+  };
 
   return (
     <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
+      <img src="/logo2.svg" alt="DFINITY logo" className="logo" />
+      <form onSubmit={handleSubmit} className="form-container">
+        <label htmlFor="name">Enter your name:</label>
+        <input id="name" type="text" placeholder="Your Name" />
+        <button type="submit">Say Hello!</button>
       </form>
-      <section id="greeting">{greeting}</section>
+      {greeting && <section id="greeting">{greeting}</section>}
     </main>
   );
 }
