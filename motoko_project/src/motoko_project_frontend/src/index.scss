@@ -1,37 +1,121 @@
+// Basic Reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: sans-serif;
-  font-size: 1.5rem;
-}
-
-img {
-  max-width: 50vw;
-  max-height: 25vw;
-  display: block;
-  margin: auto;
-}
-
-form {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to right, #4a90e2, #1456a0);
+  color: #333;
   display: flex;
   justify-content: center;
-  gap: 0.5em;
-  flex-flow: row wrap;
-  max-width: 40vw;
-  margin: auto;
-  align-items: baseline;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+// Main container styling
+main {
+  text-align: center;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 450px;
+}
+
+// Logo styling
+.logo {
+  max-width: 80px;
+  margin: 20px auto;
+  transition: transform 0.2s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+// Form styling
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin: 20px auto;
+}
+
+label {
+  font-size: 1rem;
+  color: #555;
+}
+
+input[type="text"] {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0px 4px 12px rgba(0, 123, 255, 0.4);
 }
 
 button[type="submit"] {
-  padding: 5px 20px;
-  margin: 10px auto;
-  float: right;
+  padding: 12px;
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(135deg, #007bff, #005bb5);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
+button[type="submit"]:hover {
+  background: linear-gradient(135deg, #005bb5, #003f8a);
+  transform: translateY(-2px);
+}
+
+button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+// Greeting section styling
 #greeting {
-  margin: 10px auto;
-  padding: 10px 60px;
-  border: 1px solid #222;
+  margin: 20px auto;
+  padding: 15px;
+  font-size: 1.25rem;
+  background-color: #e6f0ff;
+  color: #005bb5;
+  border: 2px solid #007bff;
+  border-radius: 12px;
+  max-width: 90%;
+  transition: transform 0.3s;
 }
 
-#greeting:empty {
-  display: none;
+#greeting:not(:empty) {
+  transform: scale(1.03);
+}
+
+// Responsive adjustments
+@media (max-width: 600px) {
+  body {
+    font-size: 1.2rem;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  .logo {
+    max-width: 70px;
+  }
 }
